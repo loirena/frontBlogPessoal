@@ -6,9 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { RodapeComponent } from './rodape/rodape.component';
-//import { EntrarComponent } from './entrar/entrar.component';
-//import { CadastrarComponent } from './cadastrar/cadastrar.component';
+import { EntrarComponent } from './entrar/entrar.component';
+import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -17,8 +18,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     MenuComponent,
     RodapeComponent,
-  //  EntrarComponent,
-  //  CadastrarComponent
+    EntrarComponent,
+    CadastrarComponent
   ],
   imports: [
     BrowserModule,

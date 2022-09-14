@@ -1,0 +1,14 @@
+#img-bg{
+    background-image: url('https://i.pinimg.com/564x/e4/fd/9f/e4fd9f247a22ba556390b03c49d8d531.jpg');
+    min-height: 695px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.fcolor{
+    color: palevioletred;
+    font-weight: bold;
+}
+.bcolor{
+    background-color: peachpuff;
+}
