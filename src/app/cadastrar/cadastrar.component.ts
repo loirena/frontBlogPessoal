@@ -44,7 +44,7 @@ export class CadastrarComponent implements OnInit {
       alert("As senhas não estão compatíveis!")
     } else
     {
-      console.log(this.cadastrar())
+      
       this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => 
       {
         this.usuario = resp
