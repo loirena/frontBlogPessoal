@@ -13,11 +13,11 @@ export class InicioComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
     if (environment.token == '')
     {
-      //alert ('Sua sessão expirou, faça login novamente')
+      alert ('Sua sessão expirou, faça login novamente')
       this.router.navigate(['/entrar'])
     }
 
