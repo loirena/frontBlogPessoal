@@ -30,7 +30,8 @@ export class InicioComponent implements OnInit {
     private temaService: TemaService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    window.scroll(0,0)
 
     if (environment.token == '')
     {
@@ -50,7 +51,7 @@ export class InicioComponent implements OnInit {
   }
 
   findByIdTema(){
-    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) =>{
+    this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
   }
