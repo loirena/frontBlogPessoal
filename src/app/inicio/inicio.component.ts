@@ -21,7 +21,7 @@ export class InicioComponent implements OnInit {
   listaTemas: Tema[]
   idTema: number
 
-  user: Usuario = new Usuario()
+  usuario: Usuario = new Usuario()
   idUser = environment.id
 
   constructor(
@@ -31,7 +31,6 @@ export class InicioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    window.scroll(0,0)
 
     if (environment.token == '')
     {
@@ -66,13 +65,14 @@ export class InicioComponent implements OnInit {
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
 
-    this.user.id = this.idUser
-    this.postagem.usuario = this.user
+    this.usuario.id = this.idUser
+    this.postagem.usuario = this.usuario
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       alert('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
+      this.getAllPostagens()
     })
   }
 
