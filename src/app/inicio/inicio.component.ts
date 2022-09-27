@@ -15,6 +15,7 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
+  listaPostagem: Postagem[]
   tema: Tema = new Tema()
 
   listaTemas: Tema[]
@@ -38,6 +39,7 @@ export class InicioComponent implements OnInit {
     }
 
     this.getAllTemas()
+    this.getAllPostagens()
 
   }
 
@@ -50,6 +52,12 @@ export class InicioComponent implements OnInit {
   findByIdTema(){
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) =>{
       this.tema = resp
+    })
+  }
+
+  getAllPostagens(){
+    this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
+      this.listaPostagem = resp
     })
   }
 
