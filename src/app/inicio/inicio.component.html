@@ -31,11 +31,12 @@
 
           <a class="nav-item nav-link active btncolor font-weight-bold" id="nav-todasPostagens-tab" data-toggle="tab" href="#todasPostagens" role="tab" aria-controls="nav-todasPostagens" aria-selected="true"> Todas as Postagens </a>
 
-          <a class="nav-item nav-link btncolor font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false"> Minhas Postagens </a>
+          <a (click)='findByIdUser()' class="nav-item nav-link btncolor font-weight-bold" id="nav-minhasPostagens-tab" data-toggle="tab" href="#minhasPostagens" role="tab" aria-controls="nav-minhasPostagens" aria-selected="false"> Minhas Postagens </a>
 
           <a class="nav-item nav-link btncolor font-weight-bold" id="nav-postagemTema-tab" data-toggle="tab" href="#postagemTema" role="tab" aria-controls="nav-postagemTema" aria-selected="false">Postagens por Tema </a>
         </div>
       </nav>
+
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel" aria-labelledby="nav-todasPostagens-tab">
          
@@ -59,19 +60,31 @@
 
         
 
-
         <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="nav-minhasPostagens-tab">
 
-
-
-            
-        </div>
+          <div class="card-columns">
+              <div class="card text-center" 
+              *ngFor='let item of usuario.postagem'>  
+                  <div class="card-body">
+                      <img class="tamanho-foto" src="{{item.foto}}" alt="">
+                      <h5 class="card-title mt-0 p-2">{{item.titulo}}</h5>
+                      <small class="text-muted">Tema: {{item.tema.descricao}}</small>
+                      <p class="card-text mt-3 justify-text">{{item.texto}}</p>
+                      <p class="card-text"><small class="text-muted">
+                          {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date: 'HH:mm'}}
+                      </small></p>
+                  </div>
+              </div>
+          </div>
+  
+      </div>
 
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
             
         </div>
-      </div>
+      
 </div>
+
 
 
  
