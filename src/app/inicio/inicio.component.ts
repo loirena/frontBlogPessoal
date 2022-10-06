@@ -57,6 +57,12 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
+      this.usuario = resp
+    })
+  }
+
   getAllPostagens(){
     this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
       this.listaPostagem = resp
