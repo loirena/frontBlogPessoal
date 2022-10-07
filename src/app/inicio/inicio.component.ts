@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../service/auth.service';
+import { Usuario } from '../model/Usuario';
+import { Tema } from '../model/Tema';
+import { TemaService } from '../service/tema.service';
+import { PostagemService } from '../service/postagem.service';
+import { Postagem } from '../model/Postagem';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Postagem } from '../model/Postagem';
-import { Tema } from '../model/Tema';
-import { Usuario } from '../model/Usuario';
-import { AuthService } from '../service/auth.service';
-import { PostagemService } from '../service/postagem.service';
-import { TemaService } from '../service/tema.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-inicio',
@@ -16,9 +16,9 @@ import { TemaService } from '../service/tema.service';
 export class InicioComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
-  listaPostagem: Postagem[]
-  tema: Tema = new Tema()
+  listaPostagens: Postagem[]
 
+  tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
 
@@ -57,17 +57,18 @@ export class InicioComponent implements OnInit {
     })
   }
 
+  getAllPostagens(){
+    this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
+      this.listaPostagens = resp
+    })
+  }
+
   findByIdUser(){
     this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
       this.usuario = resp
     })
   }
 
-  getAllPostagens(){
-    this.postagemService.getAllPostagens().subscribe((resp: Postagem[]) => {
-      this.listaPostagem = resp
-    })
-  }
 
   findByIdUser(){
     this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
