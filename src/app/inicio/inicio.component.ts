@@ -70,6 +70,12 @@ export class InicioComponent implements OnInit {
   }
 
 
+  findByIdUser(){
+    this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
+      this.usuario = resp
+    })
+  }
+
   publicar(){
     this.tema.id = this.idTema
     this.postagem.tema = this.tema
