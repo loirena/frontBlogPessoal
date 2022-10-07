@@ -1,3 +1,13 @@
+
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
+import { Postagem } from '../model/Postagem';
+import { Tema } from '../model/Tema';
+import { Usuario } from '../model/Usuario';
+import { AlertasService } from '../service/alertas.service';
+
+
 import { AuthService } from '../service/auth.service';
 import { Usuario } from '../model/Usuario';
 import { Tema } from '../model/Tema';
@@ -29,7 +39,8 @@ export class InicioComponent implements OnInit {
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -38,7 +49,7 @@ export class InicioComponent implements OnInit {
 
     if (environment.token == '')
     {
-      alert ('Sua sessão expirou, faça login novamente')
+      this.alertas.showAlertDanger ('Sua sessão expirou, faça login novamente')
       this.router.navigate(['/entrar'])
     }
 
@@ -87,7 +98,7 @@ export class InicioComponent implements OnInit {
 
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
-      alert('Postagem realizada com sucesso!')
+      this.alertas.showAlertSuccess('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
       this.getAllPostagens()
     })
