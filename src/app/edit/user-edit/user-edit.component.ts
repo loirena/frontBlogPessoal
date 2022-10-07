@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from 'src/app/model/Usuario';
+import { AlertasService } from 'src/app/service/alertas.service';
 import { AuthService } from 'src/app/service/auth.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -20,7 +21,8 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -29,7 +31,7 @@ export class UserEditComponent implements OnInit {
 
     if (environment.token == '')
     {
-      alert ('Sua sessão expirou, faça login novamente')
+      this.alertas.showAlertInfo('Sua sessão expirou, faça login novamente')
       this.router.navigate(['/entrar'])
     }
     this.idUser = this.route.snapshot.params['id']
@@ -50,7 +52,7 @@ export class UserEditComponent implements OnInit {
     this.usuario.tipo = this.tipoUser
     if(this.usuario.senha != this.confirmarSenha)
     {
-      alert("As senhas não estão compatíveis!")
+      this.alertas.showAlertDanger("As senhas não estão compatíveis!")
     } else
     {
       
@@ -58,7 +60,7 @@ export class UserEditComponent implements OnInit {
       {
         this.usuario = resp
         this.router.navigate(['/inicio'])
-        alert('Usuário atualizado com sucesso! Faça o login novamente.')
+        this.alertas.showAlertSuccess('Usuário atualizado com sucesso! Faça o login novamente.')
         environment.token = ''
         environment.nome = ''
         environment.foto = ''
