@@ -1,21 +1,13 @@
-
-import { Component, OnInit } from '@angular/core';
+import { AlertasService } from './../service/alertas.service';
+import { AlertasComponent } from './../alertas/alertas.component';
+import { AuthService } from './../service/auth.service';
+import { Usuario } from './../model/Usuario';
+import { Tema } from './../model/Tema';
+import { TemaService } from './../service/tema.service';
+import { PostagemService } from './../service/postagem.service';
+import { Postagem } from './../model/Postagem';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
-import { Postagem } from '../model/Postagem';
-import { Tema } from '../model/Tema';
-import { Usuario } from '../model/Usuario';
-import { AlertasService } from '../service/alertas.service';
-
-
-import { AuthService } from '../service/auth.service';
-import { Usuario } from '../model/Usuario';
-import { Tema } from '../model/Tema';
-import { TemaService } from '../service/tema.service';
-import { PostagemService } from '../service/postagem.service';
-import { Postagem } from '../model/Postagem';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from './../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -34,6 +26,9 @@ export class InicioComponent implements OnInit {
 
   usuario: Usuario = new Usuario()
   idUser = environment.id
+
+  key: 'data'
+  reverse: true
 
   constructor(
     private router: Router,
@@ -83,11 +78,6 @@ export class InicioComponent implements OnInit {
   }
 
 
-  findByIdUser(){
-    this.authService.getByIdUser(this.idUser).subscribe((resp: Usuario) => {
-      this.usuario = resp
-    })
-  }
 
   publicar(){
     this.tema.id = this.idTema

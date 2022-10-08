@@ -46,7 +46,7 @@
          
         <div class="card-columns">
             <div class="card text-center" 
-              *ngFor='let item of listaPostagens'>
+              *ngFor='let item of listaPostagens | orderBy: key: reverse'>
                 <div class="card-body">
                         <img class="tamanho-foto" src="{{item.foto}}" alt="">
                         <h5 class="card-title mt-0 p-2">{{item.titulo}}</h5>
@@ -73,7 +73,7 @@
 
           <div class="card-columns">
               <div class="card text-center" 
-              *ngFor='let item of usuario.postagem'>  
+              *ngFor='let item of usuario.postagem | orderBy: key: reverse'>  
                   <div class="card-body">
                       <img class="tamanho-foto" src="{{item.foto}}" alt="">
                       <h5 class="card-title mt-0 p-2">{{item.titulo}}</h5>
@@ -93,7 +93,7 @@
         <div class="tab-pane fade" id="postagemTema" role="tabpanel" aria-labelledby="nav-postagemTema-tab">
           <div class="card-columns" *ngFor='let tema of listaTemas'>
             <div class="card text-center" 
-            *ngFor='let item of tema.postagem'>  
+            *ngFor='let item of tema.postagem | orderBy: key: reverse'>  
                 <div class="card-body">
                     <img class="tamanho-foto" src="{{item.foto}}" alt="">
                     <h5 class="card-title mt-0 p-2">{{item.titulo}}</h5>
@@ -109,9 +109,9 @@
       
 </div>
             </div>
-        </div>
+        
 
-    </div>
+
 
 
 
